@@ -1,5 +1,6 @@
 import glob
 import tqdm
+import os
 
 VERSION = "fcnc_v3"
 BABY_DIR = "/hadoop/cms/store/user/ksalyer/FCNC_NanoSkim/{}".format(VERSION)
@@ -8,6 +9,9 @@ N_EVENTS_DIR = "./n_events"
 sample_dirs = glob.glob(BABY_DIR+"/*")
 
 sample_dirs = glob.glob(BABY_DIR+"/*")
+
+if not os.path.exists(N_EVENTS_DIR):
+	os.mkdir(N_EVENTS_DIR)
 
 for sample_dir in tqdm.tqdm(sample_dirs):
     n_events_files = glob.glob(sample_dir+"/output_*_nevents.txt")
